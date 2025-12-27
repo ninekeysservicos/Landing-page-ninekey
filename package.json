@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Landing page institucional da NineKeys",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "(tsc || true) && mkdir -p public/assets && cp -R src/styles/*.css public/assets/",
     "sync:css": "mkdir -p public/assets && cp -R src/styles/*.css public/assets/",
