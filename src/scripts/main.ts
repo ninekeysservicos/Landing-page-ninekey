@@ -210,13 +210,14 @@ function closeModal(): void {
  * Initialize modal functionality
  */
 function initModal(): void {
-  // Setup "Ver mais" button click handlers
+  // Setup card click handlers
   document.addEventListener('click', (event) => {
     const target = event.target as HTMLElement;
     const openButton = target.closest('[data-open-modal]');
 
     if (openButton) {
       const pointId = openButton.getAttribute('data-open-modal');
+      console.log('Clicked on card with id:', pointId);
       if (pointId) {
         event.preventDefault();
         openModal(pointId);
