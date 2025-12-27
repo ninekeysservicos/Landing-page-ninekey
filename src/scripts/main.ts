@@ -1,0 +1,568 @@
+/**
+ * NineKeys Landing Page - Main Script
+ *
+ * Handles content injection and interactive behaviors.
+ */
+
+import { CONTENT, LINKS, buildWhatsappUrl, METHOD_CONTENT, METHOD_POINTS, MethodPoint, CASES_CONTENT, CASES, Case, MANIFESTO_CONTENT, CONTACT_CONTENT, FORM_ENDPOINT, FOOTER_CONTENT } from "../config/content";
+
+/**
+ * Set text content of an element by selector
+ */
+function setText(selector: string, text: string): void {
+  const el = document.querySelector(selector);
+  if (el) {
+    el.textContent = text;
+  } else {
+    console.warn(`Element not found: ${selector}`);
+  }
+}
+
+/**
+ * Set href attribute of an element by selector
+ */
+function setHref(selector: string, url: string): void {
+  const el = document.querySelector(selector) as HTMLAnchorElement | null;
+  if (el) {
+    el.href = url;
+  } else {
+    console.warn(`Element not found: ${selector}`);
+  }
+}
+
+/**
+ * Initialize hero section content
+ */
+function initHero(): void {
+  // Set hero text content
+  setText('[data-content="hero.h1"]', CONTENT.hero.h1);
+  setText('[data-content="hero.h2"]', CONTENT.hero.h2);
+  setText('[data-content="hero.subheadline"]', CONTENT.hero.subheadline);
+
+  // Configure primary CTA (WhatsApp)
+  const primaryCta = document.querySelector('[data-whatsapp="primary"]') as HTMLAnchorElement | null;
+  if (primaryCta) {
+    primaryCta.textContent = CONTENT.hero.ctaPrimary;
+    primaryCta.href = buildWhatsappUrl();
+    primaryCta.target = "_blank";
+    primaryCta.rel = "noopener noreferrer";
+  }
+
+  // Configure secondary CTA (WhatsApp)
+  const secondaryCta = document.querySelector('[data-whatsapp="secondary"]') as HTMLAnchorElement | null;
+  if (secondaryCta) {
+    secondaryCta.textContent = CONTENT.hero.ctaSecondary;
+    secondaryCta.href = buildWhatsappUrl();
+    secondaryCta.target = "_blank";
+    secondaryCta.rel = "noopener noreferrer";
+  }
+}
+
+/**
+ * Initialize smooth scroll for navigation links
+ */
+function initSmoothScroll(): void {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const href = anchor.getAttribute('href');
+      if (href && href !== '#') {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }
+    });
+  });
+}
+
+/**
+ * Create a method card element (desktop view)
+ */
+function createMethodCard(point: MethodPoint): HTMLElement {
+  const card = document.createElement("article");
+  card.className = "card method-card";
+  card.setAttribute("data-method-card", "");
+
+  card.innerHTML = `
+    <h3 class="method-card-title">${point.title}</h3>
+    <p class="method-card-summary">${point.summary}</p>
+    <button class="btn btn-ghost btn-sm method-card-btn" data-open-modal="${point.id}">
+      Ver mais
+    </button>
+  `;
+
+  return card;
+}
+
+/**
+ * Create an accordion item element (mobile view)
+ */
+function createAccordionItem(point: MethodPoint): HTMLElement {
+  const item = document.createElement("div");
+  item.className = "accordion-item";
+
+  item.innerHTML = `
+    <button class="accordion-header" aria-expanded="false" aria-controls="accordion-body-${point.id}">
+      <span class="accordion-title">${point.title}</span>
+      <span class="accordion-icon" aria-hidden="true">+</span>
+    </button>
+    <div class="accordion-body" id="accordion-body-${point.id}" hidden>
+      <p>${point.description}</p>
+    </div>
+  `;
+
+  return item;
+}
+
+/**
+ * Initialize método section
+ */
+function initMethod(): void {
+  // Set method section content
+  setText('[data-content="method.title"]', METHOD_CONTENT.title);
+  setText('[data-content="method.intro"]', METHOD_CONTENT.intro);
+
+  // Render cards and accordion items
+  const methodGrid = document.querySelector('[data-method-grid]');
+  if (methodGrid) {
+    METHOD_POINTS.forEach((point) => {
+      // Add card (visible on desktop)
+      methodGrid.appendChild(createMethodCard(point));
+
+      // Add accordion item (visible on mobile)
+      methodGrid.appendChild(createAccordionItem(point));
+    });
+  }
+
+  // Setup accordion functionality
+  initAccordion();
+}
+
+/**
+ * Initialize accordion expand/collapse
+ */
+function initAccordion(): void {
+  const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+  accordionHeaders.forEach((header) => {
+    header.addEventListener('click', () => {
+      const expanded = header.getAttribute('aria-expanded') === 'true';
+      const bodyId = header.getAttribute('aria-controls');
+      const body = bodyId ? document.getElementById(bodyId) : null;
+      const icon = header.querySelector('.accordion-icon');
+
+      // Toggle expanded state
+      header.setAttribute('aria-expanded', String(!expanded));
+
+      // Toggle body visibility
+      if (body) {
+        body.hidden = expanded;
+      }
+
+      // Toggle icon
+      if (icon) {
+        icon.textContent = expanded ? '+' : '−';
+      }
+    });
+  });
+}
+
+/**
+ * Open modal with method point details
+ */
+function openModal(pointId: string): void {
+  const point = METHOD_POINTS.find((p) => p.id === pointId);
+  const modal = document.querySelector('[data-method-modal]') as HTMLElement | null;
+  const modalTitle = document.getElementById('modal-title');
+  const modalBody = document.getElementById('modal-body');
+
+  if (!point || !modal || !modalTitle || !modalBody) return;
+
+  // Set modal content
+  modalTitle.textContent = point.title;
+  modalBody.textContent = point.description;
+
+  // Show modal
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+
+  // Focus on modal
+  modal.focus();
+}
+
+/**
+ * Close modal dialog
+ */
+function closeModal(): void {
+  const modal = document.querySelector('[data-method-modal]') as HTMLElement | null;
+
+  if (!modal) return;
+
+  // Hide modal
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+/**
+ * Initialize modal functionality
+ */
+function initModal(): void {
+  // Setup "Ver mais" button click handlers
+  document.addEventListener('click', (event) => {
+    const target = event.target as HTMLElement;
+    const openButton = target.closest('[data-open-modal]');
+
+    if (openButton) {
+      const pointId = openButton.getAttribute('data-open-modal');
+      if (pointId) {
+        event.preventDefault();
+        openModal(pointId);
+      }
+    }
+  });
+
+  // Setup close button handlers
+  document.querySelectorAll('[data-modal-close]').forEach((btn) => {
+    btn.addEventListener('click', (event) => {
+      event.preventDefault();
+      closeModal();
+    });
+  });
+
+  // Close on ESC key
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      const modal = document.querySelector('[data-method-modal]');
+      if (modal && modal.getAttribute('aria-hidden') === 'false') {
+        closeModal();
+      }
+    }
+  });
+}
+
+/**
+ * Create a case card element
+ */
+function createCaseCard(caseItem: Case): HTMLElement {
+  const card = document.createElement("article");
+  card.className = "case-card";
+  card.setAttribute("data-case-id", caseItem.id);
+
+  card.innerHTML = `
+    <div class="case-video">
+      <iframe
+        src="${caseItem.videoEmbedUrl}"
+        loading="lazy"
+        title="${caseItem.title}"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        class="case-video-iframe">
+      </iframe>
+    </div>
+
+    <div class="case-images">
+      <div class="case-image-wrapper">
+        <img src="${caseItem.beforeImage}" alt="Antes - ${caseItem.title}" loading="lazy" class="case-image" />
+        <span class="case-image-label">Antes</span>
+      </div>
+      <div class="case-image-wrapper">
+        <img src="${caseItem.afterImage}" alt="Depois - ${caseItem.title}" loading="lazy" class="case-image" />
+        <span class="case-image-label">Depois</span>
+      </div>
+    </div>
+
+    <div class="case-text">
+      <p class="case-text-item"><strong>Antes:</strong> ${caseItem.beforeText}</p>
+      <p class="case-text-item"><strong>Depois:</strong> ${caseItem.afterText}</p>
+      <h4 class="case-results-title">Resultados:</h4>
+      <ul class="case-results-list">
+        ${caseItem.results.map((result) => `<li class="case-result-item">${result}</li>`).join("")}
+      </ul>
+    </div>
+  `;
+
+  return card;
+}
+
+/**
+ * Initialize cases section
+ */
+function initCases(): void {
+  // Set cases section content
+  setText('[data-content="cases.title"]', CASES_CONTENT.title);
+  setText('[data-content="cases.subtitle"]', CASES_CONTENT.subtitle);
+  setText('[data-content="cases.cta"]', CASES_CONTENT.cta);
+
+  // Render case cards
+  const carouselTrack = document.querySelector('[data-carousel-track]');
+  if (carouselTrack) {
+    CASES.forEach((caseItem) => {
+      carouselTrack.appendChild(createCaseCard(caseItem));
+    });
+  }
+
+  // Create carousel dots
+  const dotsContainer = document.querySelector('[data-carousel-dots]');
+  if (dotsContainer) {
+    CASES.forEach((_, index) => {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot';
+      dot.setAttribute('data-carousel-dot', String(index));
+      dot.setAttribute('aria-label', `Ir para caso ${index + 1}`);
+      if (index === 0) dot.classList.add('active');
+      dotsContainer.appendChild(dot);
+    });
+  }
+
+  // Initialize carousel functionality
+  initCarousel();
+}
+
+/**
+ * Initialize carousel functionality
+ */
+function initCarousel(): void {
+  const carousel = document.querySelector('[data-carousel]') as HTMLElement | null;
+  const track = document.querySelector('[data-carousel-track]') as HTMLElement | null;
+  const prevBtn = document.querySelector('[data-carousel-prev]') as HTMLButtonElement | null;
+  const nextBtn = document.querySelector('[data-carousel-next]') as HTMLButtonElement | null;
+  const dots = document.querySelectorAll('[data-carousel-dot]');
+
+  if (!carousel || !track) return;
+
+  let currentIndex = 0;
+  const totalSlides = CASES.length;
+
+  /**
+   * Update carousel position and active states
+   */
+  const updateCarousel = (index: number) => {
+    currentIndex = Math.max(0, Math.min(index, totalSlides - 1));
+
+    // Scroll to current card
+    const cards = track.children;
+    const currentCard = cards[currentIndex] as HTMLElement;
+    if (currentCard) {
+      track.scrollTo({
+        left: currentCard.offsetLeft - track.offsetLeft,
+        behavior: 'smooth'
+      });
+    }
+
+    // Update dots
+    dots.forEach((dot, i) => {
+      if (i === currentIndex) {
+        dot.classList.add('active');
+        dot.setAttribute('aria-current', 'true');
+      } else {
+        dot.classList.remove('active');
+        dot.removeAttribute('aria-current');
+      }
+    });
+
+    // Update arrow button states
+    if (prevBtn) {
+      prevBtn.disabled = currentIndex === 0;
+    }
+    if (nextBtn) {
+      nextBtn.disabled = currentIndex === totalSlides - 1;
+    }
+  };
+
+  // Arrow navigation
+  prevBtn?.addEventListener('click', () => {
+    updateCarousel(currentIndex - 1);
+  });
+
+  nextBtn?.addEventListener('click', () => {
+    updateCarousel(currentIndex + 1);
+  });
+
+  // Dot navigation
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      updateCarousel(index);
+    });
+  });
+
+  // Keyboard navigation
+  carousel.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      updateCarousel(currentIndex - 1);
+    } else if (e.key === 'ArrowRight') {
+      updateCarousel(currentIndex + 1);
+    }
+  });
+
+  // Initialize first state
+  updateCarousel(0);
+}
+
+/**
+ * Initialize manifesto section
+ */
+function initManifesto(): void {
+  // Set manifesto title
+  setText('[data-content="manifesto.title"]', MANIFESTO_CONTENT.title);
+
+  // Render manifesto paragraphs
+  const manifestoBody = document.querySelector('[data-manifesto-body]');
+  if (manifestoBody) {
+    MANIFESTO_CONTENT.paragraphs.forEach((paragraph) => {
+      const p = document.createElement('p');
+      p.className = 'manifesto-text';
+      // Replace \n with <br> for line breaks
+      p.innerHTML = paragraph.replace(/\n/g, '<br>');
+      manifestoBody.appendChild(p);
+    });
+  }
+}
+
+/**
+ * Initialize contact section
+ */
+function initContact(): void {
+  // Set contact text content
+  setText('[data-content="contact.title"]', CONTACT_CONTENT.title);
+  setText('[data-content="contact.text"]', CONTACT_CONTENT.text);
+
+  // Form labels
+  setText('[data-content="contact.formLabels.name"]', CONTACT_CONTENT.formLabels.name);
+  setText('[data-content="contact.formLabels.email"]', CONTACT_CONTENT.formLabels.email);
+  setText('[data-content="contact.formLabels.phone"]', CONTACT_CONTENT.formLabels.phone);
+  setText('[data-content="contact.formLabels.city"]', CONTACT_CONTENT.formLabels.city);
+
+  // Form messages
+  setText('[data-content="contact.formMessages.submit"]', CONTACT_CONTENT.formMessages.submit);
+
+  // Configure WhatsApp CTA
+  const contactWhatsapp = document.querySelector('[data-whatsapp="contact"]') as HTMLAnchorElement | null;
+  if (contactWhatsapp) {
+    contactWhatsapp.textContent = CONTACT_CONTENT.ctaWhatsapp;
+    contactWhatsapp.href = buildWhatsappUrl();
+  }
+}
+
+/**
+ * Initialize contact form submission
+ */
+function initContactForm(): void {
+  const form = document.querySelector('[data-contact-form]') as HTMLFormElement | null;
+  const formMessage = document.querySelector('[data-form-message]') as HTMLElement | null;
+
+  if (!form) return;
+
+  /**
+   * Set form feedback message
+   */
+  const setFormMessage = (text: string, isError: boolean = false): void => {
+    if (formMessage) {
+      formMessage.textContent = text;
+      formMessage.style.color = isError ? 'var(--color-error)' : 'var(--color-success)';
+    }
+  };
+
+  /**
+   * Clear form feedback message
+   */
+  const clearFormMessage = (): void => {
+    if (formMessage) {
+      formMessage.textContent = '';
+    }
+  };
+
+  // Handle form submission
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    // Clear previous messages
+    clearFormMessage();
+
+    // Disable submit button during request
+    const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = 'Enviando...';
+    }
+
+    try {
+      const formData = new FormData(form);
+
+      const response = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error('Form submission failed');
+      }
+
+      // Success
+      setFormMessage(CONTACT_CONTENT.formMessages.success, false);
+      form.reset();
+    } catch (error) {
+      // Error
+      console.error('Form submission error:', error);
+      setFormMessage(CONTACT_CONTENT.formMessages.error, true);
+    } finally {
+      // Re-enable submit button
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = CONTACT_CONTENT.formMessages.submit;
+      }
+    }
+  });
+}
+
+/**
+ * Initialize footer section
+ */
+function initFooter(): void {
+  // Set footer text content
+  setText('[data-content="footer.tagline"]', FOOTER_CONTENT.tagline);
+  setText('[data-content="footer.email"]', FOOTER_CONTENT.email);
+  setText('[data-content="footer.phone"]', FOOTER_CONTENT.phone);
+  setText('[data-content="footer.privacy"]', FOOTER_CONTENT.privacy);
+  setText('[data-content="footer.copyright"]', FOOTER_CONTENT.copyright);
+}
+
+/**
+ * Initialize floating WhatsApp button
+ */
+function initFloatingWhatsApp(): void {
+  const floating = document.querySelector('[data-whatsapp="floating"]') as HTMLAnchorElement | null;
+  if (floating) {
+    floating.href = `https://web.whatsapp.com/send?phone=${LINKS.whatsappNumber}`;
+  }
+}
+
+/**
+ * Main initialization
+ */
+function init(): void {
+  initHero();
+  initMethod();
+  initModal();
+  initCases();
+  initManifesto();
+  initContact();
+  initContactForm();
+  initFooter();
+  initFloatingWhatsApp();
+  initSmoothScroll();
+  console.log('NineKeys Landing Page initialized');
+}
+
+// Run on DOM ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}

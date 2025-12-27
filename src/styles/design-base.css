@@ -1,0 +1,517 @@
+/**
+ * NineKeys Design System - Base Design Tokens
+ *
+ * Gerado automaticamente a partir de product-details/DESIGN_OVERVIEW.md
+ * Versão: 1.0.0
+ * Data: 2025-12-26
+ *
+ * Este arquivo contém todos os tokens de design (variáveis CSS) do projeto.
+ * Não edite diretamente - alterações devem ser feitas em DESIGN_OVERVIEW.md
+ */
+
+:root {
+  /* ========== CORES PRIMÁRIAS ========== */
+  --color-primary: #C8A24A;
+  --color-primary-hover: #D4B663;
+  --color-primary-active: #A8842F;
+  --color-primary-light: #F0E3C4;
+
+  /* ========== CORES SECUNDÁRIAS ========== */
+  --color-secondary: #111218;
+  --color-secondary-hover: #1A1C24;
+
+  /* ========== CORES SEMÂNTICAS ========== */
+  --color-success: #3C8C64;
+  --color-warning: #B7892B;
+  --color-error: #C65656;
+  --color-info: #4B7FB0;
+
+  /* ========== ESCALAS DE CINZA / TEXTO ========== */
+  --color-text-main: #F6F1E6;
+  --color-text-secondary: #C9C1B2;
+  --color-text-disabled: #7C7568;
+
+  /* ========== CORES DE SUPERFÍCIE ========== */
+  --color-background: #0A0A0C;
+  --color-surface: #121217;
+  --color-surface-strong: #161821;
+  --color-border: #23242B;
+
+  /* ========== TIPOGRAFIA - FONTES ========== */
+  --font-primary: "Manrope", "Helvetica Neue", Helvetica, sans-serif;
+  --font-secondary: "Cormorant Garamond", "Times New Roman", serif;
+  --font-mono: "IBM Plex Mono", Menlo, monospace;
+
+  /* ========== TIPOGRAFIA - TAMANHOS ========== */
+  --text-xs: 0.75rem;    /* 12px */
+  --text-sm: 0.875rem;   /* 14px */
+  --text-base: 1rem;     /* 16px */
+  --text-lg: 1.125rem;   /* 18px */
+  --text-xl: 1.25rem;    /* 20px */
+  --text-2xl: 1.5rem;    /* 24px */
+  --text-3xl: 1.875rem;  /* 30px */
+  --text-4xl: 2.625rem;  /* 42px */
+
+  /* ========== TIPOGRAFIA - PESOS ========== */
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+
+  /* ========== ESPAÇAMENTO ========== */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+
+  /* ========== SOMBRAS ========== */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 10px 24px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.45);
+  --shadow-xl: 0 24px 48px rgba(0, 0, 0, 0.55);
+
+  /* ========== BORDER RADIUS ========== */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* ========== BREAKPOINTS (para uso em media queries) ========== */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+
+  /* ========== TRANSIÇÕES ========== */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ========== RESET E BASE ========== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-regular);
+  line-height: 1.6;
+  color: var(--color-text-main);
+  background: var(--color-background);
+  min-height: 100vh;
+}
+
+/* ========== TIPOGRAFIA BASE ========== */
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: var(--font-semibold);
+  line-height: 1.2;
+}
+
+h1 {
+  font-family: var(--font-secondary);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-bold);
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-family: var(--font-secondary);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-semibold);
+}
+
+h3 {
+  font-size: var(--text-xl);
+}
+
+h4 {
+  font-size: var(--text-lg);
+}
+
+h5, h6 {
+  font-size: var(--text-base);
+}
+
+p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-primary);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ========== LAYOUT ========== */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.section {
+  padding: var(--space-16) 0;
+}
+
+.section-title {
+  font-family: var(--font-secondary);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-semibold);
+  margin-bottom: var(--space-4);
+}
+
+.section-subtitle {
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+}
+
+/* ========== COMPONENTES - BOTÕES ========== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  font-weight: var(--font-semibold);
+  transition: all var(--transition-fast);
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-family: var(--font-primary);
+  text-decoration: none;
+}
+
+/* Tamanhos de Botão */
+.btn-sm {
+  height: 36px;
+  padding: 0 var(--space-4);
+  font-size: var(--text-sm);
+}
+
+.btn-md {
+  height: 44px;
+  padding: 0 var(--space-6);
+  font-size: var(--text-base);
+}
+
+.btn-lg {
+  height: 52px;
+  padding: 0 var(--space-8);
+  font-size: var(--text-lg);
+}
+
+/* Variantes de Botão */
+.btn-primary {
+  background: var(--color-primary);
+  color: #0B0D10;
+  border-color: var(--color-primary);
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:active {
+  background: var(--color-primary-active);
+  border-color: var(--color-primary-active);
+  transform: translateY(1px);
+}
+
+.btn-primary:disabled {
+  background: var(--color-border);
+  border-color: var(--color-border);
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.btn-secondary:hover {
+  background: rgba(200, 162, 74, 0.1);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:active {
+  background: rgba(200, 162, 74, 0.2);
+  transform: translateY(1px);
+}
+
+.btn-secondary:disabled {
+  border-color: var(--color-border);
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-primary);
+  border-color: transparent;
+}
+
+.btn-ghost:hover {
+  background: rgba(200, 162, 74, 0.1);
+}
+
+.btn-ghost:active {
+  background: rgba(200, 162, 74, 0.2);
+  transform: translateY(1px);
+}
+
+.btn-ghost:disabled {
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}
+
+/* ========== COMPONENTES - INPUTS ========== */
+
+.input {
+  height: 44px;
+  padding: 0 var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: var(--text-base);
+  font-family: var(--font-primary);
+  background: #0E0E13;
+  color: var(--color-text-main);
+  transition: all var(--transition-fast);
+}
+
+.input::placeholder {
+  color: var(--color-text-disabled);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(200, 162, 74, 0.2);
+}
+
+.input.error {
+  border-color: var(--color-error);
+}
+
+.input.error:focus {
+  box-shadow: 0 0 0 3px rgba(198, 86, 86, 0.2);
+}
+
+.input:disabled {
+  background: var(--color-background);
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}
+
+textarea.input {
+  height: auto;
+  min-height: 120px;
+  padding: var(--space-3) var(--space-4);
+  resize: vertical;
+}
+
+/* ========== COMPONENTES - CARDS ========== */
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-fast);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.card-strong {
+  background: var(--color-surface-strong);
+}
+
+/* ========== COMPONENTES - ACCORDION (Mobile) ========== */
+
+.accordion-item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--space-4);
+  background: transparent;
+  border: none;
+  color: var(--color-text-main);
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  text-align: left;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.accordion-header:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.accordion-icon {
+  font-size: var(--text-xl);
+  color: var(--color-primary);
+  transition: transform var(--transition-fast);
+}
+
+.accordion-item.active .accordion-icon {
+  transform: rotate(45deg);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-base);
+}
+
+.accordion-item.active .accordion-content {
+  max-height: 500px;
+}
+
+.accordion-body {
+  padding: 0 var(--space-4) var(--space-4);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+/* ========== ACESSIBILIDADE ========== */
+
+/* Foco visível para navegação por teclado */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Remover animações para usuários com preferência de movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ========== UTILIDADES ========== */
+
+.surface-strong {
+  background: var(--color-surface-strong);
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-disabled {
+  color: var(--color-text-disabled);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* ========== RESPONSIVE BREAKPOINTS ========== */
+
+/* Mobile first - base styles acima são mobile */
+
+/* Tablet (640px+) */
+@media (min-width: 640px) {
+  .container {
+    padding: 0 var(--space-6);
+  }
+
+  h1 {
+    font-size: calc(var(--text-4xl) * 1.1);
+  }
+
+  .section {
+    padding: calc(var(--space-16) * 1.25) 0;
+  }
+}
+
+/* Desktop (1024px+) */
+@media (min-width: 1024px) {
+  h1 {
+    font-size: calc(var(--text-4xl) * 1.2);
+  }
+
+  .section {
+    padding: calc(var(--space-16) * 1.5) 0;
+  }
+
+  .grid {
+    gap: var(--space-8);
+  }
+}
+
+/* Wide (1280px+) */
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
