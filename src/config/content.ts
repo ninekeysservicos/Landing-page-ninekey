@@ -52,63 +52,63 @@ export const METHOD_POINTS: MethodPoint[] = [
     id: "ponto-1",
     title: "Análise Estratégica do Imóvel",
     summary: "Avaliação completa do potencial do imóvel para locação de curta duração.",
-    description: "Realizamos uma análise detalhada do imóvel, considerando localização, público-alvo, concorrência e potencial de rentabilidade. Definimos a estratégia ideal de posicionamento e precificação para maximizar resultados.",
+    description: "Avaliação estratégica baseada em dados de localização, tamanho e custos operacionais, utilizando o histórico e a inteligência do portfólio NineKeys para determinar competitividade e potencial.",
     image: "/assets/ponto-1.png"
   },
   {
     id: "ponto-2",
     title: "Projeto de Adequação (3D)",
     summary: "Projeto visual em 3D mostrando o potencial completo do espaço.",
-    description: "Desenvolvemos um projeto de adequação em 3D que permite visualizar o imóvel totalmente transformado antes de iniciar qualquer obra. Planejamos cada detalhe para criar um espaço que encanta hóspedes e maximiza ocupação.",
+    description: "Desenvolvimento de projeto de adequação em 3D, focado no menor investimento necessário para tornar o imóvel mais atrativo e rentável, priorizando eficiência operacional e geração de valor para os futuros hóspedes.",
     image: "/assets/ponto-2.png"
   },
   {
     id: "ponto-3",
     title: "Reforma, Mobiliário e Layout",
     summary: "Transformação física do espaço com mobília e acabamentos premium.",
-    description: "Executamos a reforma completa com gestão de fornecedores, cronograma e qualidade. Fornecemos mobiliário, decoração e layout pensados para funcionalidade e experiência do hóspede.",
+    description: "Execução das adequações físicas e definição de mobiliário e layout, com foco em eficiência operacional, conforto do hóspede e otimização de espaço, sempre orientadas à rentabilidade e durabilidade da operação.",
     image: "/assets/ponto-3.png"
   },
   {
     id: "ponto-4",
     title: "Enxoval e Padronização",
     summary: "Enxoval completo e padronizado para experiência consistente.",
-    description: "Fornecemos enxoval completo (roupas de cama, banho, utensílios de cozinha) com padrão definido e reposição garantida. Cada item é escolhido para transmitir qualidade e cuidado.",
+    description: "Aquisição e definição do enxoval completo, com especificação dos itens, quantidades corretas e padrão mínimo de qualidade, visando oferecer uma experiência consistente ao hóspede. As decisões consideram impacto direto em limpeza, manutenção e eficiência operacional.",
     image: "/assets/ponto-4.png"
   },
   {
     id: "ponto-5",
     title: "Conteúdo e Anúncio",
     summary: "Fotos profissionais e anúncios otimizados para conversão.",
-    description: "Produzimos fotos e vídeos profissionais que destacam o imóvel. Criamos anúncios com copy persuasivo e otimizado para SEO nas principais plataformas de locação.",
+    description: "Criação e otimização do conteúdo do anúncio, com foco em apresentação clara e eficiente nas plataformas. Destaque estratégico para diferenciais do imóvel, áreas comuns e localização, utilizando fotografia adequada para maximizar conversão e performance.",
     image: "/assets/ponto-5.png"
   },
   {
     id: "ponto-6",
     title: "Gestão das Plataformas",
     summary: "Gestão ativa em Airbnb, Booking e outras plataformas.",
-    description: "Gerenciamos calendários, precificação dinâmica, comunicação com hóspedes e otimização de anúncios. Monitoramos avaliações e ajustamos estratégias para manter alta taxa de ocupação.",
+    description: "Gestão ativa das plataformas de locação, incluindo controle de reservas e calendário, com foco na performance diária do imóvel. Utilização de inteligência de preço, análise de sazonalidade e estratégias promocionais para maximizar ocupação e reduzir vacância.",
     image: "/assets/ponto-6.png"
   },
   {
     id: "ponto-7",
     title: "Atendimento ao Hóspede",
     summary: "Atendimento profissional do check-in ao check-out.",
-    description: "Oferecemos atendimento completo: comunicação pré-chegada, check-in e check-out, suporte durante a estadia e resolução de problemas. Garantimos experiência premium em todos os pontos de contato.",
+    description: "Comunicação fluida, simples e efetiva antes, durante e após a estadia, com gestão atenta de situações cotidianas e exceções. Atenção e prontidão garantem boas avaliações, maior rentabilidade e redução da vacância ao longo do tempo.",
     image: "/assets/ponto-7.png"
   },
   {
     id: "ponto-8",
     title: "Limpeza e Manutenção",
     summary: "Limpeza profunda e manutenção preventiva constante.",
-    description: "Realizamos limpeza profissional entre estadias com checklist rigoroso. Fazemos manutenção preventiva e corretiva, garantindo que o imóvel esteja sempre impecável e funcionando perfeitamente.",
+    description: "Execução de limpeza e manutenção com padrão operacional contínuo, respeitando intervalo médio de até 3 horas entre check-out e check-in. Diferente do que muitos imaginam, a manutenção recorrente e o cuidado diário mantêm o imóvel sempre conservado e com aspecto de novo — ao contrário da locação de longa duração, onde o desgaste se acumula. Etapa crucial para boas avaliações e longevidade do patrimônio.",
     image: "/assets/ponto-8.png"
   },
   {
     id: "ponto-9",
     title: "Gestão Contínua e Evolução",
     summary: "Monitoramento contínuo e melhoria baseada em dados.",
-    description: "Acompanhamos métricas de ocupação, receita e satisfação. Implementamos melhorias contínuas baseadas em feedback e dados, garantindo que o imóvel evolua e mantenha alta performance.",
+    description: "Acompanhamento permanente da operação, com melhorias contínuas baseadas em dados, aprendizados do portfólio e tendências globais, garantindo que os imóveis evoluam junto com a NineKeys.",
     image: "/assets/ponto-9.png"
   }
 ];

@@ -86,9 +86,10 @@ function createMethodCard(point: MethodPoint): HTMLElement {
   const card = document.createElement("article");
   card.className = "card method-card";
   card.setAttribute("data-method-card", "");
+  card.setAttribute("data-open-modal", point.id);
+  card.style.cursor = "pointer";
 
   card.innerHTML = `
-    <img src="${point.image}" alt="${point.title}" class="method-card-image" loading="lazy" />
     <h3 class="method-card-title">${point.title}</h3>
     <p class="method-card-summary">${point.summary}</p>
   `;
