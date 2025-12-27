@@ -10,7 +10,7 @@ export const CONTENT = {
         h1: "NineKeys",
         h2: "Onde imóveis viram resultado.",
         subheadline: "Gestão profissional de imóveis, da estratégia à operação diária.",
-        ctaPrimary: "Avaliar meu imóvel",
+        ctaPrimary: "Falar com a NineKeys",
         ctaSecondary: "Falar com a NineKeys"
     }
 };

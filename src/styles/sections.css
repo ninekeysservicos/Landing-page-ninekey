@@ -29,6 +29,7 @@
   justify-content: space-between;
   padding: var(--space-4) 0;
   min-height: 64px;
+  position: relative;
 }
 
 .logo-link {
@@ -51,8 +52,55 @@
   gap: var(--space-6);
 }
 
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-main);
+  cursor: pointer;
+}
+
+.nav-toggle:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.nav-toggle-icon {
+  width: 20px;
+  height: 20px;
+  display: block;
+  filter: brightness(0.85);
+}
+
+.nav-mobile {
+  display: none;
+  position: absolute;
+  top: calc(100% + var(--space-3));
+  right: 0;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  min-width: 180px;
+  border-radius: 16px;
+  border: 1px solid var(--color-border);
+  background: #0b0b0b;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.45);
+}
+
+.nav-mobile[hidden] {
+  display: none;
+}
+
+.nav-mobile .nav-link {
+  padding: var(--space-2) 0;
+}
+
 .nav-link {
-  font-size: var(--text-sm);
+  font-size: var(--text-base);
   font-weight: var(--font-medium);
   color: var(--color-text-secondary);
   transition: color var(--transition-fast);
@@ -78,10 +126,18 @@
   width: 100%;
 }
 
-/* Mobile: Hide navigation (will add hamburger menu in future milestone) */
+/* Mobile: Show hamburger menu */
 @media (max-width: 639px) {
-  .nav {
+  .nav-desktop {
     display: none;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .nav-mobile:not([hidden]) {
+    display: flex;
   }
 
   .logo {

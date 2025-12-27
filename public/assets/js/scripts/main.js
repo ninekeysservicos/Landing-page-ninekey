@@ -74,6 +74,53 @@ function initSmoothScroll() {
     });
 }
 /**
+ * Initialize mobile navigation dropdown
+ */
+function initMobileNav() {
+    const toggle = document.querySelector('.nav-toggle');
+    const mobileNav = document.querySelector('[data-mobile-nav]');
+    if (!toggle || !mobileNav)
+        return;
+    const closeMenu = () => {
+        toggle.setAttribute('aria-expanded', 'false');
+        mobileNav.hidden = true;
+    };
+    const openMenu = () => {
+        toggle.setAttribute('aria-expanded', 'true');
+        mobileNav.hidden = false;
+    };
+    toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        if (expanded) {
+            closeMenu();
+        }
+        else {
+            openMenu();
+        }
+    });
+    mobileNav.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', closeMenu);
+    });
+    document.addEventListener('click', (event) => {
+        if (mobileNav.hidden)
+            return;
+        const target = event.target;
+        if (!mobileNav.contains(target) && !toggle.contains(target)) {
+            closeMenu();
+        }
+    });
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            closeMenu();
+        }
+    });
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 639) {
+            closeMenu();
+        }
+    });
+}
+/**
  * Create a method card element (desktop view)
  */
 function createMethodCard(point) {
@@ -431,44 +478,31 @@ function initContactForm() {
             formMessage.textContent = '';
         }
     };
-    // Handle form submission
-    form.addEventListener('submit', async (event) => {
+    // Handle form submission via mailto
+    form.addEventListener('submit', (event) => {
         event.preventDefault();
-        // Clear previous messages
         clearFormMessage();
-        // Disable submit button during request
         const submitButton = form.querySelector('button[type="submit"]');
         if (submitButton) {
             submitButton.disabled = true;
-            submitButton.textContent = 'Enviando...';
+            submitButton.textContent = 'Abrindo e-mail...';
         }
-        try {
-            const formData = new FormData(form);
-            const response = await fetch(FORM_ENDPOINT, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
-            if (!response.ok) {
-                throw new Error('Form submission failed');
-            }
-            // Success
-            setFormMessage(CONTACT_CONTENT.formMessages.success, false);
-            form.reset();
-        }
-        catch (error) {
-            // Error
-            console.error('Form submission error:', error);
-            setFormMessage(CONTACT_CONTENT.formMessages.error, true);
-        }
-        finally {
-            // Re-enable submit button
-            if (submitButton) {
+        const formData = new FormData(form);
+        const name = String(formData.get('name') ?? '');
+        const email = String(formData.get('email') ?? '');
+        const phone = String(formData.get('phone') ?? '');
+        const city = String(formData.get('city') ?? '');
+        const subject = encodeURIComponent('Contato via formulário - NineKeys');
+        const body = encodeURIComponent(`Nome: ${name}\nE-mail: ${email}\nTelefone: ${phone}\nCidade do imóvel: ${city}`);
+        window.location.href = `mailto:${FOOTER_CONTENT.email}?subject=${subject}&body=${body}`;
+        setFormMessage(CONTACT_CONTENT.formMessages.success, false);
+        form.reset();
+        if (submitButton) {
+            submitButton.textContent = 'Sua requisição foi enviada';
+            window.setTimeout(() => {
                 submitButton.disabled = false;
                 submitButton.textContent = CONTACT_CONTENT.formMessages.submit;
-            }
+            }, 2000);
         }
     });
 }
@@ -505,6 +539,7 @@ function init() {
     initContactForm();
     initFooter();
     initFloatingWhatsApp();
+    initMobileNav();
     initSmoothScroll();
     console.log('NineKeys Landing Page initialized');
 }
