@@ -252,34 +252,30 @@ function createCaseCard(caseItem: Case): HTMLElement {
 
   card.innerHTML = `
     <div class="case-video">
-      <iframe
-        src="${caseItem.videoEmbedUrl}"
-        loading="lazy"
-        title="${caseItem.title}"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-        class="case-video-iframe">
-      </iframe>
+      <video
+        autoplay
+        loop
+        muted
+        playsinline
+        class="case-video-player">
+        <source src="${caseItem.videoUrl}" type="video/mp4">
+      </video>
     </div>
 
-    <div class="case-images">
-      <div class="case-image-wrapper">
-        <img src="${caseItem.beforeImage}" alt="Antes - ${caseItem.title}" loading="lazy" class="case-image" />
-        <span class="case-image-label">Antes</span>
+    <div class="case-content">
+      <div class="case-header">
+        <h3 class="case-title">${caseItem.title}</h3>
+        <span class="case-location">${caseItem.location}</span>
       </div>
-      <div class="case-image-wrapper">
-        <img src="${caseItem.afterImage}" alt="Depois - ${caseItem.title}" loading="lazy" class="case-image" />
-        <span class="case-image-label">Depois</span>
-      </div>
-    </div>
 
-    <div class="case-text">
-      <p class="case-text-item"><strong>Antes:</strong> ${caseItem.beforeText}</p>
-      <p class="case-text-item"><strong>Depois:</strong> ${caseItem.afterText}</p>
-      <h4 class="case-results-title">Resultados:</h4>
-      <ul class="case-results-list">
-        ${caseItem.results.map((result) => `<li class="case-result-item">${result}</li>`).join("")}
-      </ul>
+      <p class="case-description">${caseItem.description}</p>
+
+      <div class="case-results">
+        <h4 class="case-results-title">Resultados:</h4>
+        <ul class="case-results-list">
+          ${caseItem.results.map((result) => `<li class="case-result-item">${result}</li>`).join("")}
+        </ul>
+      </div>
     </div>
   `;
 

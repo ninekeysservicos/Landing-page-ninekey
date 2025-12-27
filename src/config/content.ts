@@ -123,59 +123,90 @@ export const CASES_CONTENT = {
 export interface Case {
   id: string;
   title: string;
-  beforeText: string;
-  afterText: string;
+  location: string;
+  description: string;
   results: string[];
-  videoEmbedUrl: string;
-  beforeImage: string;
-  afterImage: string;
+  videoUrl: string;
 }
 
 export const CASES: Case[] = [
   {
     id: "case-1",
-    title: "Apartamento Jardins - SP",
-    beforeText: "Imóvel ocioso, sem retorno e com manutenção irregular",
-    afterText: "Taxa de ocupação 85%, receita previsível e imóvel sempre impecável",
+    title: "Residência Contemporânea Premium",
+    location: "São Paulo - SP",
+    description: "Arquitetura limpa e contemporânea com materiais nobres. Concreto aparente, vidro e madeira natural criam uma atmosfera sofisticada. Iluminação estratégica realça cada detalhe ao anoitecer.",
     results: [
-      "Imóvel sempre bem cuidado e padronizado",
-      "Experiência consistente para o hóspede",
-      "Operação profissional e sem dor de cabeça",
-      "Evolução contínua da performance"
+      "Ocupação média de 92% nos últimos 12 meses",
+      "Avaliação 4.9/5.0 com destaque para design",
+      "Hóspedes corporativos e executivos recorrentes",
+      "Valorização de 18% no primeiro ano"
     ],
-    videoEmbedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    beforeImage: "/cases/case-1-before.jpg",
-    afterImage: "/cases/case-1-after.jpg"
+    videoUrl: "/assets/case1.mp4"
   },
   {
     id: "case-2",
-    title: "Cobertura Vila Madalena - SP",
-    beforeText: "Reformado mas sem identidade, anúncios desorganizados",
-    afterText: "Marca forte, fotos profissionais, avaliações 5 estrelas",
+    title: "Apartamento Urban Vista",
+    location: "São Paulo - SP",
+    description: "Varanda moderna com vista privilegiada e iluminação urbana ao fundo. Ambiente acolhedor com toques de elegância discreta. Perfeito para quem busca sofisticação e tranquilidade.",
     results: [
-      "Imóvel sempre bem cuidado e padronizado",
-      "Experiência consistente para o hóspede",
-      "Operação profissional e sem dor de cabeça",
-      "Evolução contínua da performance"
+      "Taxa de ocupação estável em 88%",
+      "Experiência noturna valorizada pelos hóspedes",
+      "Gestão profissional sem intercorrências",
+      "Renovação contínua de mobiliário e enxoval"
     ],
-    videoEmbedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    beforeImage: "/cases/case-2-before.jpg",
-    afterImage: "/cases/case-2-after.jpg"
+    videoUrl: "/assets/case2.mp4"
   },
   {
     id: "case-3",
-    title: "Studio Pinheiros - SP",
-    beforeText: "Baixa ocupação, reclamações frequentes, gestão desorganizada",
-    afterText: "Ocupação máxima, hóspedes satisfeitos, gestão profissional",
+    title: "Edifício Boutique Moderno",
+    location: "São Paulo - SP",
+    description: "Arquitetura contemporânea de 4 andares com fachada em concreto e vidro. Iluminação quente e acolhedora valoriza o projeto. Localização estratégica com atmosfera exclusiva.",
     results: [
-      "Imóvel sempre bem cuidado e padronizado",
-      "Experiência consistente para o hóspede",
-      "Operação profissional e sem dor de cabeça",
-      "Evolução contínua da performance"
+      "Ocupação média de 85% em área nobre",
+      "Portfólio diversificado de hóspedes",
+      "Manutenção preventiva e imóvel sempre impecável",
+      "Evolução contínua de performance"
     ],
-    videoEmbedUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    beforeImage: "/cases/case-3-before.jpg",
-    afterImage: "/cases/case-3-after.jpg"
+    videoUrl: "/assets/case3.mp4"
+  },
+  {
+    id: "case-4",
+    title: "Beach House Infinity",
+    location: "Litoral - SP",
+    description: "Casa de luxo à beira-mar com piscina infinita e vista panorâmica para o oceano. Arquitetura contemporânea em harmonia com a natureza. Luz natural e design sofisticado criam experiência inesquecível.",
+    results: [
+      "Ocupação sazonal otimizada em 94%",
+      "Precificação premium justificada pela experiência",
+      "Hóspedes celebram eventos especiais e retornam",
+      "Posicionamento de destaque nas plataformas"
+    ],
+    videoUrl: "/assets/case4.mp4"
+  },
+  {
+    id: "case-5",
+    title: "Refúgio Minimalista Praia",
+    location: "Litoral - SP",
+    description: "Design minimalista com paleta neutra e elegância discreta. Integração perfeita entre interior e paisagem costeira. Atmosfera serena que convida ao descanso e contemplação.",
+    results: [
+      "Ocupação de 87% focada em alta temporada",
+      "Público que valoriza design e tranquilidade",
+      "Operação remota eficiente e sem falhas",
+      "Rentabilidade acima da média da região"
+    ],
+    videoUrl: "/assets/case5.mp4"
+  },
+  {
+    id: "case-6",
+    title: "Villa Tropical Contemporânea",
+    location: "Litoral - SP",
+    description: "Fusão perfeita entre luxo contemporâneo e natureza tropical. Piscina de borda infinita com vista para o mar. Palmeiras emolduram a arquitetura elegante em dia ensolarado.",
+    results: [
+      "Taxa de ocupação premium de 91%",
+      "Estratégia de precificação dinâmica otimizada",
+      "Experiência cinco estrelas reconhecida por hóspedes",
+      "Imóvel referência em gestão profissional"
+    ],
+    videoUrl: "/assets/case6.mp4"
   }
 ];
 
