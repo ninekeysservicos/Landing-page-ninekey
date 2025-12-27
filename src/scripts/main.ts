@@ -4,7 +4,7 @@
  * Handles content injection and interactive behaviors.
  */
 
-import { CASES, CASES_CONTENT, CONTACT_CONTENT, CONTENT, Case, FOOTER_CONTENT, FORM_ENDPOINT, LINKS, MANIFESTO_CONTENT, METHOD_CONTENT, METHOD_POINTS, MethodPoint, buildWhatsappUrl } from "../config/content";
+import { CASES, CASES_CONTENT, CONTACT_CONTENT, CONTENT, Case, FOOTER_CONTENT, FORM_ENDPOINT, LINKS, MANIFESTO_CONTENT, METHOD_CONTENT, METHOD_POINTS, MethodPoint, buildWhatsappUrl } from "../config/content.js";
 
 /**
  * Set text content of an element by selector
@@ -90,6 +90,7 @@ function createMethodCard(point: MethodPoint): HTMLElement {
   card.style.cursor = "pointer";
 
   card.innerHTML = `
+    <img src="${point.image}" alt="${point.title}" class="method-card-image" loading="lazy" />
     <h3 class="method-card-title">${point.title}</h3>
     <p class="method-card-summary">${point.summary}</p>
   `;
@@ -127,10 +128,14 @@ function initMethod(): void {
 
   // Render cards and accordion items
   const methodGrid = document.querySelector('[data-method-grid]');
+  console.log('Method grid element:', methodGrid);
+  console.log('Method points:', METHOD_POINTS.length);
   if (methodGrid) {
     METHOD_POINTS.forEach((point) => {
       // Add card (visible on desktop)
-      methodGrid.appendChild(createMethodCard(point));
+      const card = createMethodCard(point);
+      console.log('Created method card:', card);
+      methodGrid.appendChild(card);
 
       // Add accordion item (visible on mobile)
       methodGrid.appendChild(createAccordionItem(point));
@@ -295,9 +300,13 @@ function initCases(): void {
 
   // Render case cards
   const carouselTrack = document.querySelector('[data-carousel-track]');
+  console.log('Carousel track element:', carouselTrack);
+  console.log('Cases:', CASES.length);
   if (carouselTrack) {
     CASES.forEach((caseItem) => {
-      carouselTrack.appendChild(createCaseCard(caseItem));
+      const card = createCaseCard(caseItem);
+      console.log('Created case card:', card);
+      carouselTrack.appendChild(card);
     });
   }
 
