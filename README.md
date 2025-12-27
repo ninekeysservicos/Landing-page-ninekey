@@ -6,21 +6,21 @@ Landing page institucional da NineKeys.
 
 ### Textos
 - Edite `src/config/content.ts` (títulos, parágrafos, botões e mensagens).
-- Depois rode `npm run build` para gerar os arquivos em `public/assets/js/`.
+- Depois rode `npm run build` para gerar os arquivos em `assets/js/`.
 
 ### Vídeos
-O jeito mais simples é substituir os arquivos existentes mantendo **mesmo nome e tamanho** dentro de `public/assets/`:
-- Hero: `public/assets/hero.mp4`
-- Manifesto: `public/assets/manifest-visual.mp4`
-- Método (pontos 1-9): `public/assets/ponto-1.mp4`, `public/assets/ponto-2.mp4`, ... `public/assets/ponto-9.mp4`
-- Cases: `public/assets/case1.mp4`, `public/assets/case2.mp4`, ... `public/assets/case6.mp4`
+O jeito mais simples é substituir os arquivos existentes mantendo **mesmo nome e tamanho** dentro de `assets/`:
+- Hero: `assets/hero.mp4`
+- Manifesto: `assets/manifest-visual.mp4`
+- Método (pontos 1-9): `assets/ponto-1.mp4`, `assets/ponto-2.mp4`, ... `assets/ponto-9.mp4`
+- Cases: `assets/case1.mp4`, `assets/case2.mp4`, ... `assets/case6.mp4`
 
 Se preferir usar **outro nome**:
 - Atualize o caminho no lugar correto:
   - **Cases**: `videoUrl` em `src/config/content.ts`
   - **Método**: `image` em `src/config/content.ts` e o vídeo correspondente (o modal troca `.png` por `.mp4` em `src/scripts/main.ts`)
   - **Hero/Manifesto**: troque o `src` direto em `public/index.html`
-- Depois rode `npm run build` (para garantir que o JS atualizado vá para `public/assets/js/`).
+- Depois rode `npm run build` (para garantir que o JS atualizado vá para `assets/js/`).
 
 ## Stack
 
@@ -55,7 +55,7 @@ npm run build
 
 This will:
 1. Compile TypeScript to JavaScript (when scripts exist)
-2. Copy CSS files to `public/assets/`
+2. Copy CSS files to `assets/`
 
 ### Type checking
 

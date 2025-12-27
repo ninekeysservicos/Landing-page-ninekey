@@ -3,7 +3,7 @@
     "target": "ES2019",
     "module": "ES2015",
     "lib": ["ES2019", "DOM"],
-    "outDir": "./public/assets/js",
+    "outDir": "./assets/js",
     "rootDir": "./src",
     "strict": true,
     "esModuleInterop": true,

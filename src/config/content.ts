@@ -53,63 +53,63 @@ export const METHOD_POINTS: MethodPoint[] = [
     title: "Análise Estratégica do Imóvel",
     summary: "Avaliação completa do potencial do imóvel para locação de curta duração.",
     description: "Avaliação estratégica baseada em dados de localização, tamanho e custos operacionais, utilizando o histórico e a inteligência do portfólio NineKeys para determinar competitividade e potencial.",
-    image: "/assets/ponto-1.png"
+    image: "assets/ponto-1.png"
   },
   {
     id: "ponto-2",
     title: "Projeto de Adequação (3D)",
     summary: "Projeto visual em 3D mostrando o potencial completo do espaço.",
     description: "Desenvolvimento de projeto de adequação em 3D, focado no menor investimento necessário para tornar o imóvel mais atrativo e rentável, priorizando eficiência operacional e geração de valor para os futuros hóspedes.",
-    image: "/assets/ponto-2.png"
+    image: "assets/ponto-2.png"
   },
   {
     id: "ponto-3",
     title: "Reforma, Mobiliário e Layout",
     summary: "Transformação física do espaço com mobília e acabamentos premium.",
     description: "Execução das adequações físicas e definição de mobiliário e layout, com foco em eficiência operacional, conforto do hóspede e otimização de espaço, sempre orientadas à rentabilidade e durabilidade da operação.",
-    image: "/assets/ponto-3.png"
+    image: "assets/ponto-3.png"
   },
   {
     id: "ponto-4",
     title: "Enxoval e Padronização",
     summary: "Enxoval completo e padronizado para experiência consistente.",
     description: "Aquisição e definição do enxoval completo, com especificação dos itens, quantidades corretas e padrão mínimo de qualidade, visando oferecer uma experiência consistente ao hóspede. As decisões consideram impacto direto em limpeza, manutenção e eficiência operacional.",
-    image: "/assets/ponto-4.png"
+    image: "assets/ponto-4.png"
   },
   {
     id: "ponto-5",
     title: "Conteúdo e Anúncio",
     summary: "Fotos profissionais e anúncios otimizados para conversão.",
     description: "Criação e otimização do conteúdo do anúncio, com foco em apresentação clara e eficiente nas plataformas. Destaque estratégico para diferenciais do imóvel, áreas comuns e localização, utilizando fotografia adequada para maximizar conversão e performance.",
-    image: "/assets/ponto-5.png"
+    image: "assets/ponto-5.png"
   },
   {
     id: "ponto-6",
     title: "Gestão das Plataformas",
     summary: "Gestão ativa em Airbnb, Booking e outras plataformas.",
     description: "Gestão ativa das plataformas de locação, incluindo controle de reservas e calendário, com foco na performance diária do imóvel. Utilização de inteligência de preço, análise de sazonalidade e estratégias promocionais para maximizar ocupação e reduzir vacância.",
-    image: "/assets/ponto-6.png"
+    image: "assets/ponto-6.png"
   },
   {
     id: "ponto-7",
     title: "Atendimento ao Hóspede",
     summary: "Atendimento profissional do check-in ao check-out.",
     description: "Comunicação fluida, simples e efetiva antes, durante e após a estadia, com gestão atenta de situações cotidianas e exceções. Atenção e prontidão garantem boas avaliações, maior rentabilidade e redução da vacância ao longo do tempo.",
-    image: "/assets/ponto-7.png"
+    image: "assets/ponto-7.png"
   },
   {
     id: "ponto-8",
     title: "Limpeza e Manutenção",
     summary: "Limpeza profunda e manutenção preventiva constante.",
     description: "Execução de limpeza e manutenção com padrão operacional contínuo, respeitando intervalo médio de até 3 horas entre check-out e check-in. Diferente do que muitos imaginam, a manutenção recorrente e o cuidado diário mantêm o imóvel sempre conservado e com aspecto de novo — ao contrário da locação de longa duração, onde o desgaste se acumula. Etapa crucial para boas avaliações e longevidade do patrimônio.",
-    image: "/assets/ponto-8.png"
+    image: "assets/ponto-8.png"
   },
   {
     id: "ponto-9",
     title: "Gestão Contínua e Evolução",
     summary: "Monitoramento contínuo e melhoria baseada em dados.",
     description: "Acompanhamento permanente da operação, com melhorias contínuas baseadas em dados, aprendizados do portfólio e tendências globais, garantindo que os imóveis evoluam junto com a NineKeys.",
-    image: "/assets/ponto-9.png"
+    image: "assets/ponto-9.png"
   }
 ];
 
@@ -141,7 +141,7 @@ export const CASES: Case[] = [
       "Hóspedes corporativos e executivos recorrentes",
       "Valorização de 18% no primeiro ano"
     ],
-    videoUrl: "/assets/case1.mp4"
+    videoUrl: "assets/case1.mp4"
   },
   {
     id: "case-2",
@@ -154,7 +154,7 @@ export const CASES: Case[] = [
       "Gestão profissional sem intercorrências",
       "Renovação contínua de mobiliário e enxoval"
     ],
-    videoUrl: "/assets/case2.mp4"
+    videoUrl: "assets/case2.mp4"
   },
   {
     id: "case-3",
@@ -167,7 +167,7 @@ export const CASES: Case[] = [
       "Manutenção preventiva e imóvel sempre impecável",
       "Evolução contínua de performance"
     ],
-    videoUrl: "/assets/case3.mp4"
+    videoUrl: "assets/case3.mp4"
   },
   {
     id: "case-4",
@@ -180,7 +180,7 @@ export const CASES: Case[] = [
       "Hóspedes celebram eventos especiais e retornam",
       "Posicionamento de destaque nas plataformas"
     ],
-    videoUrl: "/assets/case4.mp4"
+    videoUrl: "assets/case4.mp4"
   },
   {
     id: "case-5",
@@ -193,7 +193,7 @@ export const CASES: Case[] = [
       "Operação remota eficiente e sem falhas",
       "Rentabilidade acima da média da região"
     ],
-    videoUrl: "/assets/case5.mp4"
+    videoUrl: "assets/case5.mp4"
   },
   {
     id: "case-6",
@@ -206,7 +206,7 @@ export const CASES: Case[] = [
       "Experiência cinco estrelas reconhecida por hóspedes",
       "Imóvel referência em gestão profissional"
     ],
-    videoUrl: "/assets/case6.mp4"
+    videoUrl: "assets/case6.mp4"
   }
 ];
 

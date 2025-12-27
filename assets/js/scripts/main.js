@@ -285,6 +285,9 @@ function createCaseCard(caseItem) {
         loop
         muted
         playsinline
+        preload="metadata"
+        width="550"
+        height="309"
         class="case-video-player">
         <source src="${caseItem.videoUrl}" type="video/mp4">
       </video>

@@ -5,8 +5,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "(tsc || true) && mkdir -p public/assets && cp -R src/styles/*.css public/assets/",
-    "sync:css": "mkdir -p public/assets && cp -R src/styles/*.css public/assets/",
+    "build": "(tsc || true) && mkdir -p assets && cp -R src/styles/*.css assets/",
+    "sync:css": "mkdir -p assets && cp -R src/styles/*.css assets/",
     "type-check": "tsc --noEmit || echo 'No TypeScript files found - this is OK for now'",
     "dev": "tsc --watch"
   },
