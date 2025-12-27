@@ -38,6 +38,13 @@
   <meta name="twitter:description" content="Gestão profissional de imóveis, da estratégia à operação diária.">
   <meta name="twitter:image" content="https://ninekeys.com.br/logo-title-row.png">
 
+  <!-- Preload Critical Resources (Performance) -->
+  <link rel="preload" href="/assets/design-base.css" as="style">
+  <link rel="preload" href="/assets/base.css" as="style">
+  <link rel="preload" href="/logo-title-row.png" as="image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <!-- Stylesheets -->
   <link rel="stylesheet" href="/assets/design-base.css">
   <link rel="stylesheet" href="/assets/base.css">
@@ -89,6 +96,10 @@
     "description": "Gestão profissional de imóveis de curta temporada, da estratégia à operação diária.",
     "email": "contato@ninekeys.com.br",
     "telephone": "+55-11-92147-2102",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "BR"
+    },
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+55-11-92147-2102",
@@ -136,6 +147,9 @@
 
 <body>
 
+  <!-- Skip to main content (Accessibility) -->
+  <a href="#main-content" class="skip-to-main">Pular para o conteúdo principal</a>
+
   <!-- Header -->
   <header class="site-header" id="top">
     <div class="container header-inner">
@@ -175,7 +189,7 @@
           </div>
         </div>
         <div class="hero-visual" aria-hidden="true">
-          <video autoplay loop muted playsinline width="800" height="600" style="width: 100%; height: auto;">
+          <video autoplay loop muted playsinline width="800" height="600" style="width: 100%; height: auto;" poster="/assets/hero.png">
             <source src="/assets/hero.mp4" type="video/mp4">
           </video>
         </div>
@@ -247,7 +261,7 @@
           </h2>
           <div class="manifesto-body">
             <div class="manifest-visual" aria-hidden="true">
-              <video autoplay loop muted playsinline width="500" height="600" style="max-width: 100%; height: auto;">
+              <video autoplay loop muted playsinline width="500" height="600" style="max-width: 100%; height: auto;" loading="lazy">
                 <source src="/assets/manifest-visual.mp4" type="video/mp4">
               </video>
             </div>
@@ -334,7 +348,7 @@
     <div class="modal-content" role="document">
 
       <div class="modal-body">
-        <video id="modal-video" class="modal-video" autoplay loop muted playsinline width="800" height="600" style="max-width: 100%; height: auto;">
+        <video id="modal-video" class="modal-video" autoplay loop muted playsinline width="800" height="600" style="max-width: 100%; height: auto;" preload="metadata">
           <source id="modal-video-source" src="" type="video/mp4">
         </video>
         <h3 class="modal-title" id="modal-title"></h3>

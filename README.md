@@ -2,7 +2,7 @@
 
 Landing page institucional da NineKeys.
 
-## Como atualizar textos e vídeos (para o cliente)
+## Como atualizar textos e vídeos
 
 ### Textos
 - Edite `src/config/content.ts` (títulos, parágrafos, botões e mensagens).
