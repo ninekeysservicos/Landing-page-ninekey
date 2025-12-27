@@ -742,7 +742,7 @@
 .manifesto-text-wrapper {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  /* gap: var(--space-4); */
   max-width: 600px;
 }
 
@@ -750,7 +750,7 @@
   font-size: var(--text-base);
   color: var(--color-text-secondary);
   line-height: 1.7;
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-3);
   text-align: left;
   max-width: 600px;
 }
