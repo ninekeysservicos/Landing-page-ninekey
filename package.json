@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "build": "(tsc || true) && mkdir -p public/assets && cp -R src/styles/*.css public/assets/",
+    "sync:css": "mkdir -p public/assets && cp -R src/styles/*.css public/assets/",
     "type-check": "tsc --noEmit || echo 'No TypeScript files found - this is OK for now'",
     "dev": "tsc --watch"
   },

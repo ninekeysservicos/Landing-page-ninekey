@@ -4,7 +4,7 @@
  * Handles content injection and interactive behaviors.
  */
 
-import { CONTENT, LINKS, buildWhatsappUrl, METHOD_CONTENT, METHOD_POINTS, MethodPoint, CASES_CONTENT, CASES, Case, MANIFESTO_CONTENT, CONTACT_CONTENT, FORM_ENDPOINT, FOOTER_CONTENT } from "../config/content";
+import { CASES, CASES_CONTENT, CONTACT_CONTENT, CONTENT, Case, FOOTER_CONTENT, FORM_ENDPOINT, LINKS, MANIFESTO_CONTENT, METHOD_CONTENT, METHOD_POINTS, MethodPoint, buildWhatsappUrl } from "../config/content";
 
 /**
  * Set text content of an element by selector
@@ -88,11 +88,9 @@ function createMethodCard(point: MethodPoint): HTMLElement {
   card.setAttribute("data-method-card", "");
 
   card.innerHTML = `
+    <img src="${point.image}" alt="${point.title}" class="method-card-image" loading="lazy" />
     <h3 class="method-card-title">${point.title}</h3>
     <p class="method-card-summary">${point.summary}</p>
-    <button class="btn btn-ghost btn-sm method-card-btn" data-open-modal="${point.id}">
-      Ver mais
-    </button>
   `;
 
   return card;
