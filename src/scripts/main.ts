@@ -182,12 +182,20 @@ function openModal(pointId: string): void {
   const point = METHOD_POINTS.find((p) => p.id === pointId);
   const modal = document.querySelector('[data-method-modal]') as HTMLElement | null;
   const modalTitle = document.getElementById('modal-title');
+  const modalVideo = document.getElementById('modal-video') as HTMLVideoElement | null;
+  const modalVideoSource = document.getElementById('modal-video-source') as HTMLSourceElement | null;
   const modalBody = document.getElementById('modal-body');
 
-  if (!point || !modal || !modalTitle || !modalBody) return;
+  if (!point || !modal || !modalTitle || !modalVideo || !modalVideoSource || !modalBody) return;
 
   // Set modal content
   modalTitle.textContent = point.title;
+
+  // Convert image path to video path (replace .png with .mp4)
+  const videoUrl = point.image.replace('.png', '.mp4');
+  modalVideoSource.src = videoUrl;
+  modalVideo.load(); // Reload video with new source
+
   modalBody.textContent = point.description;
 
   // Show modal

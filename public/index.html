@@ -274,13 +274,12 @@
   <div class="modal" data-method-modal aria-hidden="true" role="dialog">
     <div class="modal-overlay" data-modal-close aria-label="Fechar modal"></div>
     <div class="modal-content" role="document">
-      <div class="modal-header">
-        <h3 class="modal-title" id="modal-title"></h3>
-        <button class="modal-close" data-modal-close aria-label="Fechar">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+
       <div class="modal-body">
+        <video id="modal-video" class="modal-video" autoplay loop muted playsinline>
+          <source id="modal-video-source" src="" type="video/mp4">
+        </video>
+        <h3 class="modal-title" id="modal-title"></h3>
         <p id="modal-body"></p>
       </div>
     </div>
