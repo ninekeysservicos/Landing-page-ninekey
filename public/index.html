@@ -15,7 +15,13 @@
   <link rel="canonical" href="https://ninekeys.com.br">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/logo-simple.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/logo-simple.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/logo-simple.png">
+
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#C8A24A">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <!-- Open Graph -->
   <meta property="og:title" content="NineKeys — Onde imóveis viram resultado">
@@ -37,7 +43,42 @@
   <link rel="stylesheet" href="/assets/base.css">
   <link rel="stylesheet" href="/assets/sections.css">
 
+  <!-- Performance Optimization -->
+  <style>
+    /* Font optimization - ensure fonts display immediately */
+    @font-face {
+      font-family: 'Manrope';
+      font-style: normal;
+      font-weight: 400 800;
+      font-display: swap;
+      src: local('Manrope'), local('Helvetica Neue'), local('Helvetica');
+    }
+    @font-face {
+      font-family: 'Cormorant Garamond';
+      font-style: normal;
+      font-weight: 400 700;
+      font-display: swap;
+      src: local('Cormorant Garamond'), local('Times New Roman');
+    }
+  </style>
+
   <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "NineKeys",
+    "url": "https://ninekeys.com.br",
+    "description": "Gestão profissional de imóveis de curta temporada, da estratégia à operação diária.",
+    "inLanguage": "pt-BR",
+    "publisher": {
+      "@type": "Organization",
+      "name": "NineKeys",
+      "url": "https://ninekeys.com.br"
+    }
+  }
+  </script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -46,6 +87,8 @@
     "url": "https://ninekeys.com.br",
     "logo": "https://ninekeys.com.br/logo-title-row.png",
     "description": "Gestão profissional de imóveis de curta temporada, da estratégia à operação diária.",
+    "email": "contato@ninekeys.com.br",
+    "telephone": "+55-11-92147-2102",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+55-11-92147-2102",
@@ -74,6 +117,21 @@
     "description": "Método estruturado em 9 pontos-chave para gestão profissional de imóveis de curta temporada."
   }
   </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://ninekeys.com.br"
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -82,7 +140,7 @@
   <header class="site-header" id="top">
     <div class="container header-inner">
       <a href="#top" class="logo-link" aria-label="NineKeys - Página inicial">
-        <img src="/logo-title-row.png" alt="NineKeys" class="logo" width="150" height="32">
+        <img src="/logo-title-row.png" alt="NineKeys" class="logo" width="764" height="266" loading="eager">
       </a>
       <nav class="nav" role="navigation" aria-label="Navegação principal">
         <a href="#metodo" class="nav-link">Método</a>
@@ -100,7 +158,7 @@
     <section id="hero" class="section hero">
       <div class="container hero-inner">
         <div class="hero-content">
-          <img src="/logo-title-col.png" alt="NineKeys" class="hero-mark" width="100" height="100">
+          <img src="/logo-title-col.png" alt="NineKeys" class="hero-mark" width="266" height="764" loading="eager">
           <!-- <p class="eyebrow" data-content="hero.h1">NineKeys</p> -->
           <h1 class="hero-title" data-content="hero.h2">Onde imóveis viram resultado.</h1>
           <p class="hero-subtitle" data-content="hero.subheadline">Gestão profissional de imóveis, da estratégia à
@@ -117,7 +175,7 @@
           </div>
         </div>
         <div class="hero-visual" aria-hidden="true">
-          <video autoplay loop muted playsinline width="100%" height="auto">
+          <video autoplay loop muted playsinline width="800" height="600" style="width: 100%; height: auto;">
             <source src="/assets/hero.mp4" type="video/mp4">
           </video>
         </div>
@@ -189,7 +247,7 @@
           </h2>
           <div class="manifesto-body">
             <div class="manifest-visual" aria-hidden="true">
-              <video autoplay loop muted playsinline width="500" height="600">
+              <video autoplay loop muted playsinline width="500" height="600" style="max-width: 100%; height: auto;">
                 <source src="/assets/manifest-visual.mp4" type="video/mp4">
               </video>
             </div>
@@ -216,22 +274,22 @@
             Falar com a NineKeys
           </a>
         </div>
-        <form class="contact-form" data-contact-form>
+        <form class="contact-form" data-contact-form aria-label="Formulário de contato">
           <label class="form-label">
             <span class="form-label-text" data-content="contact.formLabels.name">Nome</span>
-            <input class="input" name="name" type="text" required />
+            <input class="input" name="name" type="text" required autocomplete="name" aria-required="true" />
           </label>
           <label class="form-label">
             <span class="form-label-text" data-content="contact.formLabels.email">E-mail</span>
-            <input class="input" name="email" type="email" required />
+            <input class="input" name="email" type="email" required autocomplete="email" aria-required="true" />
           </label>
           <label class="form-label">
             <span class="form-label-text" data-content="contact.formLabels.phone">Telefone</span>
-            <input class="input" name="phone" type="tel" required />
+            <input class="input" name="phone" type="tel" required autocomplete="tel" aria-required="true" />
           </label>
           <label class="form-label">
             <span class="form-label-text" data-content="contact.formLabels.city">Cidade do imóvel</span>
-            <input class="input" name="city" type="text" required />
+            <input class="input" name="city" type="text" required autocomplete="address-level2" aria-required="true" />
           </label>
           <button class="btn btn-primary" type="submit" data-content="contact.formMessages.submit">
             Enviar
@@ -267,7 +325,7 @@
   <!-- Floating WhatsApp Button -->
   <a href="#" class="whatsapp-float" data-whatsapp="floating" target="_blank" rel="noopener noreferrer"
     aria-label="Falar com a NineKeys no WhatsApp">
-    <img src="assets/whatsapp.png" alt="WhatsApp" class="whatsapp-float-icon" />
+    <img src="assets/whatsapp.png" alt="WhatsApp" class="whatsapp-float-icon" width="60" height="60" loading="lazy" />
   </a>
 
   <!-- Modal for Method Point Details -->
@@ -276,7 +334,7 @@
     <div class="modal-content" role="document">
 
       <div class="modal-body">
-        <video id="modal-video" class="modal-video" autoplay loop muted playsinline>
+        <video id="modal-video" class="modal-video" autoplay loop muted playsinline width="800" height="600" style="max-width: 100%; height: auto;">
           <source id="modal-video-source" src="" type="video/mp4">
         </video>
         <h3 class="modal-title" id="modal-title"></h3>
