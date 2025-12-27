@@ -2,6 +2,26 @@
 
 Landing page institucional da NineKeys.
 
+## Como atualizar textos e vídeos (para o cliente)
+
+### Textos
+- Edite `src/config/content.ts` (títulos, parágrafos, botões e mensagens).
+- Depois rode `npm run build` para gerar os arquivos em `public/assets/js/`.
+
+### Vídeos
+O jeito mais simples é substituir os arquivos existentes mantendo **mesmo nome e tamanho** dentro de `public/assets/`:
+- Hero: `public/assets/hero.mp4`
+- Manifesto: `public/assets/manifest-visual.mp4`
+- Método (pontos 1-9): `public/assets/ponto-1.mp4`, `public/assets/ponto-2.mp4`, ... `public/assets/ponto-9.mp4`
+- Cases: `public/assets/case1.mp4`, `public/assets/case2.mp4`, ... `public/assets/case6.mp4`
+
+Se preferir usar **outro nome**:
+- Atualize o caminho no lugar correto:
+  - **Cases**: `videoUrl` em `src/config/content.ts`
+  - **Método**: `image` em `src/config/content.ts` e o vídeo correspondente (o modal troca `.png` por `.mp4` em `src/scripts/main.ts`)
+  - **Hero/Manifesto**: troque o `src` direto em `public/index.html`
+- Depois rode `npm run build` (para garantir que o JS atualizado vá para `public/assets/js/`).
+
 ## Stack
 
 - HTML5
