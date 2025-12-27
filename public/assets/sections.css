@@ -251,7 +251,6 @@
 .method-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-6);
 }
 
 /* Method Cards (Desktop) */
@@ -376,7 +375,9 @@
 /* Mobile: Switch to accordion */
 @media (max-width: 639px) {
   .method-layout {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   }
 
   .manifest-visual {
@@ -384,7 +385,9 @@
   }
 
   .method-grid {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
   }
 
   .method-card {
@@ -666,7 +669,6 @@
 
   .case-video {
     max-height: 500px;
-    height: 500px;
   }
 
   .case-video-iframe {
